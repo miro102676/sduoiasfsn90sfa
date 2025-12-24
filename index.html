@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAKE UP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --yellow: #FFD700;
+            --dark-yellow: #FFC107;
+            --dark-bg: rgba(0, 0, 0, 0.92);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: var(--white);
+            overflow-y: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('wakemain.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 2;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .logo {
+            font-size: 100px;
+            font-weight: 900;
+            color: var(--yellow);
+            letter-spacing: -3px;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            line-height: 0.9;
+            text-align: center;
+            text-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.4),
+                0 0 60px rgba(255, 215, 0, 0.2);
+        }
+        
+        .main-text {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            border-radius: 20px;
+            padding: 40px 60px;
+            margin-bottom: 60px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .neural-text {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.4;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .neural-text span {
+            color: var(--yellow);
+            font-weight: 900;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                0 0 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .creator-section {
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--yellow);
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .horizontal-photo {
+            width: 100%;
+            height: 350px;
+            background-image: url('aboutfedonko.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.9),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .income-niche {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .background-info {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .info-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .creator-name {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .income-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .income-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .niche-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .niche-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .niche-list li:before {
+            content: "•";
+            color: var(--yellow);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .background-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+        }
+        
+        .background-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--yellow);
+            font-weight: 700;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.98); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .logo, .main-text, .creator-section {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .logo {
+            animation-delay: 0.3s;
+        }
+        
+        .main-text {
+            animation-delay: 0.6s;
+        }
+        
+        .creator-section {
+            animation-delay: 0.9s;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 60px;
+                margin-bottom: 40px;
+            }
+            
+            .main-text {
+                padding: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .neural-text {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+            
+            .creator-section {
+                padding: 30px;
+            }
+            
+            .horizontal-photo {
+                height: 250px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .income-niche,
+            .background-info {
+                padding: 20px;
+            }
+            
+            .creator-name {
+                font-size: 28px;
+            }
+            
+            .income-item {
+                font-size: 18px;
+            }
+            
+            .background-text {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+            
+            .main-text {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+            
+            .neural-text {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .horizontal-photo {
+                height: 200px;
+            }
+            
+            .creator-name {
+                font-size: 24px;
+            }
+            
+            .income-item {
+                font-size: 16px;
+            }
+            
+            .background-text {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <div class="logo">
+            WAKE UP
+        </div>
+        
+        <div class="main-text">
+            <div class="neural-text">
+                "Нейросеть" по написанию твоего пошагового плана до <span>сотен тысяч</span>
+            </div>
+        </div>
+        
+        <div class="creator-section">
+            <div class="section-title">Создатель</div>
+            
+            <div class="horizontal-photo"></div>
+            
+            <div class="info-grid">
+                <div class="income-niche">
+                    <div class="creator-name">Артем Федонко</div>
+                    <div class="info-title">ДОХОД И НИША</div>
+                    <div class="income-item"><span class="highlight">• 250.000Р/мес в 14 лет</span></div>
+                    <div class="income-item">Действующая ниша:</div>
+                    <ul class="niche-list">
+                        <li>Инфобизнес</li>
+                        <li>Продажи</li>
+                    </ul>
+                </div>
+                
+                <div class="background-info">
+                    <div class="info-title">Мини - Бэкграунд</div>
+                    <div class="background-text">
+                        <span class="highlight">С 11-12 лет</span> нелепо искал и пробовал много ниш , за год заработал менее 500$
+                    </div>
+                    <div class="background-text">
+                        <span class="highlight">В 12 лет</span> начал заниматься криптовалютой , поимев от туда более 2000$ , научился продавать и ушел в инфобизнес
+                    </div>
+                    <div class="background-text">
+                        <span class="highlight">С Июля 2025</span> начал активно работать в тиктоке , телеграмме , и в тот же момент начал стрелять и набирать обороты
+                    </div>
+                    <div class="background-text">
+                        <span class="highlight">В Сентябре</span> показал первые серъезные результаты в размере 180.000Р на холодных звонках
+                    </div>
+                    <div class="background-text">
+                        <span class="highlight">В Декабре</span> пробиваю планку 250.000Р
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Wake Up Community © 2025
+        </div>
+    </div>
+</body>
+</html>
